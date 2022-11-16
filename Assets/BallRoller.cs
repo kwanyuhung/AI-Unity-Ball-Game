@@ -10,10 +10,7 @@ using TMPro;
 public class BallRoller : Agent
 {
     Rigidbody2D rBody;
-    Vector3 orgPos;
 
-    Color groundColor;
-    Vector3 playerStartPos;
 
     public Transform Target;
 
@@ -21,24 +18,33 @@ public class BallRoller : Agent
     public Transform HandAnagle;
     public Transform ArmAnagle;
     public SpriteRenderer WallSprite;
+    public TextMeshPro text;
 
     public const float forceMultiplierMin = 5;
     public const float forceMultiplierMax = 9f;
 
     public float moveForceMultiplier = 10;
 
-    float forceMultiplier = 0;
+    [SerializeField]
+    private Vector3 orgPos;
+    private Quaternion armRoateion;
+    private Color groundColor;
+    private Vector3 playerStartPos;
+    private float forceMultiplier = 0;
 
     int ballCatchCount = 0;
-    public TextMeshPro text;
+
     float score = 0f;
     string scoreText = "score:";
 
     void Start()
     {
+        Application.runInBackground = true;
         rBody = GetComponent<Rigidbody2D>();
         orgPos = this.transform.localPosition;
         playerStartPos = Player.transform.localPosition;
+
+        armRoateion = ArmAnagle.transform.localRotation;
 
         groundColor = WallSprite.color;
     }
@@ -72,13 +78,15 @@ public class BallRoller : Agent
         //when player or ball is out of range
         //reset to starting pos
         Player.transform.localPosition = playerStartPos;
+        //player arm reset
+        ArmAnagle.localRotation = armRoateion;
 
         WallSprite.color = Color.red;
 
         ballCatchCount = 0;
         score = 0;
 
-        SetReward(0);
+        SetReward(-1);
         EndEpisode();
     }
 
@@ -91,8 +99,8 @@ public class BallRoller : Agent
         if(ballCatchCount > 1)
         {
 
-            //score += 0.05f;
-            //AddReward(0.05f);
+            score += 0.05f;
+            AddReward(0.05f);
         }
     }
 
@@ -101,14 +109,15 @@ public class BallRoller : Agent
         if (collision.transform.CompareTag("hoop"))
         {
             Debug.Log("hit hoop");
-            score += 0.05f;
-            AddReward(0.05f);
+            score += 0.1f;
+            AddReward(0.1f);
         }
         else if (collision.transform.CompareTag("Wall"))
         {
+            //reset to 0
             Debug.Log("hit wall");
-            score = 0;
-            SetReward(0);
+            //score = 0;
+            //SetReward(0);
             //EndEpisode();
         }
     }

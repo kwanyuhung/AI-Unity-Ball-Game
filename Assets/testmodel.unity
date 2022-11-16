@@ -493,8 +493,9 @@ MonoBehaviour:
   HandAnagle: {fileID: 494854685}
   ArmAnagle: {fileID: 1284336677}
   WallSprite: {fileID: 918229300}
-  moveForceMultiplier: 0.2
   text: {fileID: 2037992134}
+  moveForceMultiplier: 0.2
+  orgPos: {x: 0, y: 0, z: 0}
 --- !u!114 &367941280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,7 +1111,7 @@ GameObject:
   - component: {fileID: 682522159}
   m_Layer: 0
   m_Name: blank_R
-  m_TagString: Untagged
+  m_TagString: hoop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2388,7 +2389,7 @@ GameObject:
   - component: {fileID: 2141490828}
   m_Layer: 0
   m_Name: blank_L
-  m_TagString: Untagged
+  m_TagString: hoop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
