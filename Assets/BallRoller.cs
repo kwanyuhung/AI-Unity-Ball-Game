@@ -25,10 +25,8 @@ public class BallRoller : Agent
 
     public float moveForceMultiplier = 10;
 
-    [SerializeField]
-    private Vector3 orgPos;
+    //private Vector3 ballPos;
     private Quaternion armRoateion;
-    private Color groundColor;
     private Vector3 playerStartPos;
     private float forceMultiplier = 0;
 
@@ -41,12 +39,10 @@ public class BallRoller : Agent
     {
         Application.runInBackground = true;
         rBody = GetComponent<Rigidbody2D>();
-        orgPos = this.transform.localPosition;
+        //ballPos = this.transform.localPosition;
         playerStartPos = Player.transform.localPosition;
 
         armRoateion = ArmAnagle.transform.localRotation;
-
-        groundColor = WallSprite.color;
     }
 
     private void FixedUpdate()
@@ -86,21 +82,25 @@ public class BallRoller : Agent
         ballCatchCount = 0;
         score = 0;
 
-        SetReward(-1);
+        SetReward(0);
         EndEpisode();
     }
 
     public void BallGrabReset()
     {
+        //chase ball
+        //SetReward(1);
+        //EndEpisode();
+
         //grabBall shoot again
         Reset();
 
         ballCatchCount += 1;
-        if(ballCatchCount > 1)
+        if (ballCatchCount > 1)
         {
 
-            score += 0.05f;
-            AddReward(0.05f);
+            score += 0.2f;
+            AddReward(0.2f);
         }
     }
 
@@ -108,14 +108,22 @@ public class BallRoller : Agent
     {
         if (collision.transform.CompareTag("hoop"))
         {
-            Debug.Log("hit hoop");
-            score += 0.1f;
-            AddReward(0.1f);
+            //Debug.Log("hit hoop");
+            //score += 0.1f;
+            //AddReward(0.1f);
+
+            SetReward(1.0f);
+            EndEpisode();
+
+            //reset to starting pos
+            Player.transform.localPosition = playerStartPos;
+            //player arm reset
+            ArmAnagle.localRotation = armRoateion;
         }
         else if (collision.transform.CompareTag("Wall"))
         {
             //reset to 0
-            Debug.Log("hit wall");
+            //Debug.Log("hit wall");
             //score = 0;
             //SetReward(0);
             //EndEpisode();
@@ -127,7 +135,7 @@ public class BallRoller : Agent
     {
         WallSprite.color = Color.green;
 
-        AddReward(1.0f);
+        AddReward(5.0f);
 
         //reset
         score = 0;
