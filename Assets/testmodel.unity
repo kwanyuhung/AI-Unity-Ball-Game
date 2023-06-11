@@ -495,7 +495,6 @@ MonoBehaviour:
   WallSprite: {fileID: 918229300}
   text: {fileID: 2037992134}
   moveForceMultiplier: 0.2
-  orgPos: {x: 0, y: 0, z: 0}
 --- !u!114 &367941280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,8 +517,8 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 2c6ed6293ddea4770ac914d8c9afb661, type: 3}
-  m_InferenceDevice: 2
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
   m_BehaviorType: 2
   m_BehaviorName: BallShooter
   TeamId: 0
@@ -950,6 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit

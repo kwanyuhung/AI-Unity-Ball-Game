@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1686518185",
+        "python_version": "3.8.13 (default, Oct 19 2022, 22:38:03) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\kwany\\anaconda3\\envs\\ml-agents\\Scripts\\mlagents-learn --run-id=TEST2",
+        "mlagents_version": "0.30.0",
+        "mlagents_envs_version": "0.30.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.0.1+cu117",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1686518204"
+    },
+    "total": 19.3788391,
+    "count": 1,
+    "self": 0.0033577000000022394,
+    "children": {
+        "run_training.setup": {
+            "total": 0.07268019999999975,
+            "count": 1,
+            "self": 0.07268019999999975
+        },
+        "TrainerController.start_learning": {
+            "total": 19.302801199999998,
+            "count": 1,
+            "self": 0.00029319999999799506,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 19.3024982,
+                    "count": 1,
+                    "self": 19.3024982
+                },
+                "trainer_threads": {
+                    "total": 8.000000022434506e-07,
+                    "count": 1,
+                    "self": 8.000000022434506e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 8.999999998593466e-06,
+                    "count": 1,
+                    "self": 8.999999998593466e-06
+                }
+            }
+        }
+    }
+}
